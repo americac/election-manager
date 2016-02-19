@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Elections</h1>
-
+<% if @elections.blank? %>
+<p>There are no elections currently in the system.</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -19,7 +21,7 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
 
 <%= link_to 'New Election', new_election_path %>
