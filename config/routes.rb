@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :elections
+  get 'elections/new'
+
+  get 'elections/update'
+
+  get 'elections/show'
+
+  get 'elections/delete'
+
   #get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
