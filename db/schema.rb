@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220150150) do
+ActiveRecord::Schema.define(version: 20160220152324) do
 
   create_table "elections", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -22,11 +22,12 @@ ActiveRecord::Schema.define(version: 20160220150150) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "lname",      limit: 255, null: false
-    t.string   "fname",      limit: 255, null: false
-    t.string   "netid",      limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "lname",        limit: 255,                 null: false
+    t.string   "fname",        limit: 255,                 null: false
+    t.string   "netid",        limit: 255,                 null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "global_admin",             default: false
   end
 
 end
