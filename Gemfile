@@ -39,8 +39,7 @@ group :development, :test do
   gem 'rspec-core'
   gem 'rspec-rails', require: 'rspec/rails'
   gem 'shoulda-matchers', '2.8.0', require: false
-  #gem 'shoulda-matchers', '2.8.0', require: false
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: false
   gem 'byebug'
 end
 
