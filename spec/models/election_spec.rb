@@ -17,7 +17,11 @@ RSpec.describe Election, type: :model do
     end
   end
 
-  xit "validates :conact to be an email address"
-    expect{raise StandardError, 'Contact is invalid'}.to raise_error('Contact is invalid')
+  describe "validate :contact" do
+    xit "validates :contact to be an email address" do
+      subject.contact = "americauic.edu"
+      expect{raise StandardError, 'Contact is invalid'}.to raise_error('Contact is invalid')
+    end
   end
+
 end
