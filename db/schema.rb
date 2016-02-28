@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20160228162012) do
     t.string   "title",       limit: 255,   default: "", null: false
     t.text     "description", limit: 65535
     t.string   "contact",     limit: 255
+    t.integer  "user_id",     limit: 4,                  null: false
+    t.string   "update_by",   limit: 255,  default: "nobody", null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.integer  "user_id",     limit: 4,                  null: false
-    t.string   "update_by",   limit: 255,                null: false
   end
 
   add_index "elections", ["user_id"], name: "index_elections_on_user_id", using: :btree
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20160228162012) do
     t.string   "lname",        limit: 255,                 null: false
     t.string   "fname",        limit: 255,                 null: false
     t.string   "netid",        limit: 255,                 null: false
+    t.boolean  "global_admin",             default: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.boolean  "global_admin",             default: false
   end
 
   add_foreign_key "elections", "users"
