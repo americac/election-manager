@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220185606) do
+ActiveRecord::Schema.define(version: 20160228162012) do
 
   create_table "elections", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20160220185606) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_id",     limit: 4,     null: false
+    t.integer  "update_id",   limit: 4,     null: false
   end
 
+  add_index "elections", ["update_id"], name: "fk_rails_31729c1d68", using: :btree
   add_index "elections", ["user_id"], name: "index_elections_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +36,5 @@ ActiveRecord::Schema.define(version: 20160220185606) do
   end
 
   add_foreign_key "elections", "users"
+  add_foreign_key "elections", "users", column: "update_id"
 end
