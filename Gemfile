@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
-#gem 'rails'
+# This version works leave it alone!
+gem 'rails', '4.1.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -32,21 +32,36 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production do
+  #gem 'mysql2'
+
+end
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Use MySQL db for this project
+  # This version works, leave it alone!!
+  gem 'mysql2', '~> 0.3.18'
+  #gem 'mysql2'
   gem 'rspec'
   gem 'rspec-core'
-  gem 'rspec-rails', require: 'rspec/rails'
+#  gem 'rspec-rails', require: 'rspec/rails'
+  gem 'rspec-rails'
   gem 'shoulda-matchers', '2.8.0', require: false
   gem 'factory_girl_rails', require: false
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
 
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+end
+
 group :development do
-  # Use MySQL db for this project
-  gem 'mysql2'
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  #gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
