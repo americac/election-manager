@@ -9,17 +9,21 @@ RSpec.describe Election, type: :model do
   end
   describe "validate presence of required fields" do
     it "validates presence of :title" do
-	expect(subject).to validate_presence_of(:title)
+      election = FactoryGirl.create(:election)
+      expect(election).to validate_presence_of(:title)
     end
     it "validates presence of :contact" do
-	expect(subject).to validate_presence_of(:contact)
+      election = FactoryGirl.create(:election)
+      expect(election).to validate_presence_of(:contact)
     end
     xit "validates presence of :start" do
-      expect(subject).to validate_presence_of(:start)
+      election = FactoryGirl.create(:election)
+      expect(election).to validate_presence_of(:start)
     end
 
     xit "validates presence of :finish" do
-       expect(subject).to validate_presence_of(:finish)
+      election = FactoryGirl.create(:election)
+      expect(election).to validate_presence_of(:finish)
     end
 
     xit "validates usage of owner_id instead of user_id" do
@@ -27,22 +31,13 @@ RSpec.describe Election, type: :model do
   end
 
   describe "validate election object creation" do
-    subject {
-      Election.create(
-	user_id: 2,
-	update_by: 'pjackson',
-	title: 'Annabeths Election in test',
-	description: 'New Election for testing for Annabeth',
-	contact: 'grover@uic.edu',
-      )
-    }
-
+    election = FactoryGirl.create(:election)
     xit "validates onwer_id is set" do
-      expect(subject.owner_id).to eq(2)
+      expect(election.owner_id).to be_valid
     end
 
     it "validates update_by is set" do
-      expect(subject.update_by).to eq('pjackson')
+      expect(election.update_by).to be_valid
     end
 
     it "validates title is set" do
