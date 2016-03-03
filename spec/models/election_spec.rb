@@ -1,6 +1,12 @@
 require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe Election, type: :model do
+  describe "Factory girl tests" do
+    it "has a valid factory" do
+      FactoryGirl.create(:election).should be_valid
+    end
+  end
   describe "validate presence of required fields" do
     it "validates presence of :title" do
 	expect(subject).to validate_presence_of(:title)
