@@ -54,6 +54,7 @@ class ElectionsController < ApplicationController
   # DELETE /elections/1
   # DELETE /elections/1.json
   def destroy
+    @election = Election.find(params[:id])
     @election.destroy
     respond_to do |format|
       format.html { redirect_to elections_url, notice: 'Election was successfully destroyed.' }
@@ -69,6 +70,6 @@ class ElectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def election_params
-      params.require(:election).permit(:title, :description, :contact)
+      params.require(:election).permit(:title, :description, :contact, :update_by)
     end
 end
