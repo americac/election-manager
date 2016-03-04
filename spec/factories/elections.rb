@@ -6,6 +6,7 @@ FactoryGirl.define do
     e.title { Faker::Lorem.sentence(1) }
     e.description { Faker::Lorem.paragraph(1) }
     e.contact { Faker::Internet.email }
-    #e.created_at {Faker::Time.between(DateTime.now - 1, DateTime.now)}
+    e.start { Faker::Date.backward(4) }
+    e.finish { Faker::Date.forward(4) }
   end
 end
