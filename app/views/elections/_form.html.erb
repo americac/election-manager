@@ -25,11 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :start %><br>
-    <%= f.datetime_select :start %>
+    <%= f.datetime_select :start, :discard_seconds => true , :ampm => true %>
   </div>
   <div class="field">
     <%= f.label :finish %><br>
-    <%= f.datetime_select :finish %>
+    <%= f.datetime_select :finish, :discard_seconds => true, :ampm => true %>
   </div>
   <div class="actions">
     <%= f.submit %>
