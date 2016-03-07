@@ -18,7 +18,7 @@ class Election < ActiveRecord::Base
 
   private
     def validate_start_not_before_finish
-      self.errors.add(:start, "cannot be before finish") if start.to_i > finish.to_i
+      self.errors.add(:start, "cannot be after finish") if start.to_i > finish.to_i
     end
 
     def validate_start_not_in_past
