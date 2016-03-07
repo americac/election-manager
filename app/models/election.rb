@@ -15,6 +15,23 @@ class Election < ActiveRecord::Base
 
   validates_format_of :contact, :with => /@/
 
+  def is_pending?
+    DateTime.now.to_i < start.to_i
+  end
+
+  def is_running?
+    DateTime.now.to_i > start.to_i && DateTime.now.to_i < finish.to_i
+  end
+
+  def is_finished?
+    DateTime.now.to_i > finish.to_i
+  end
+
+  def status
+    return "Finished" if is_finished?
+    return "Running" if is_running?
+    return "Pending" if is_pending?
+  end
 
   private
     def validate_start_not_before_finish
