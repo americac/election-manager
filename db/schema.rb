@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304221030) do
+ActiveRecord::Schema.define(version: 20160307223121) do
 
   create_table "elections", force: true do |t|
     t.string   "title",                          null: false
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20160304221030) do
   end
 
   add_index "elections", ["user_id"], name: "index_elections_on_user_id", using: :btree
+
+  create_table "questions", force: true do |t|
+    t.text     "question",                       null: false
+    t.integer  "limit",       default: 1,        null: false
+    t.string   "update_by",   default: "nobody", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "election_id",                    null: false
+  end
+
+  add_index "questions", ["election_id"], name: "index_questions_on_election_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "lname",                              null: false
