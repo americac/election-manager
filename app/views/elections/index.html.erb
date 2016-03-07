@@ -8,7 +8,8 @@
       <th>Title</th>
       <th>Description</th>
       <th>Contact</th>
-      <th colspan="3"></th>
+      <th>Status</th> 
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -18,6 +19,7 @@
         <td><%= election.title %></td>
         <td><%= election.description %></td>
         <td><%= election.contact %></td>
+        <td><%= election.status %></td>
         <td><%= link_to 'Show', election %></td>
         <td><%= link_to 'Edit', edit_election_path(election) %></td>
         <td><%= link_to 'Destroy', election, method: :delete, data: { confirm: 'Are you sure?' } %></td>
