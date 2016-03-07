@@ -71,5 +71,20 @@ RSpec.describe Election, type: :model do
     it "ensure start is not before finish" do
       expect{FactoryGirl.create(:election, start: Faker::Time.forward(5, :evening), finish: Faker::Time.forward(2, :evening)) }.to raise_error(/cannot be after finish/)
     end
+
+    it "returns pending status" do
+      election = FactoryGirl.build(:election, start: Faker::Time.forward(2, :evening), finish: Faker::Time.forward(5, :evening))
+      expect(election.status).to eq("Pending")
+    end
+
+    it "returns running status" do
+      election = FactoryGirl.build(:election, start: Faker::Time.backward(1, :evening), finish: Faker::Time.forward(5, :evening))
+      expect(election.status).to eq("Running")
+    end
+
+    it "returns finished status" do
+      election = FactoryGirl.build(:election, start: Faker::Time.backward(5, :evening), finish: Faker::Time.backward(1, :evening))
+      expect(election.status).to eq("Finished")
+    end
   end
 end
