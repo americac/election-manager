@@ -62,10 +62,14 @@ RSpec.describe Election, type: :model do
   end
 
   describe "validate object methods" do
-    xit "ensure start is not in the past" do
-      election = FactoryGirl.create(:election)
-      expect(election.start = Faker::Date.backward(1)).to raise_error
-      #expect{election.start = Faker::Date.backward(1)}.to raise_error(Election,"Start cannot be in the past")
+	# build does not call validations and in this case that is exaclty what is being tested so need
+	# to use create
+    it "ensure start is not in the past" do
+      expect{FactoryGirl.create(:election, start: Faker::Time.backward(1, :evening)) }.to raise_error(/cannot be in the past/)
+    end
+
+    it "ensure start is not before finish" do
+      expect{FactoryGirl.create(:election, start: Faker::Time.forward(5, :evening), finish: Faker::Time.forward(2, :evening)) }.to raise_error(/cannot be before finish/)
     end
   end
 end
